@@ -275,6 +275,9 @@
       color: var(--espresso);
       letter-spacing: -0.01em;
     }
+    .experience-block {
+      margin-bottom: 4rem;
+    }
 
     /* ---- КРУПНЫЕ И ЦЕНТРИРОВАННЫЕ ТАБЫ ---- */
     .project-tabs {
@@ -351,6 +354,82 @@
       font-size: 0.95rem;
       color: var(--walnut);
       line-height: 1.65;
+    }
+
+    /* ---- ANALYTICS SHOWCASE ---- */
+    .analytics-section {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .analytics-group {
+      background: hsla(33, 32%, 89%, 0.4);
+      border: 1px solid hsla(30, 12.5%, 18.8%, 0.08);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .analytics-group-title {
+      font-family: 'Young Serif', serif;
+      font-size: 1.1rem;
+      color: var(--espresso);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+    .analytics-card {
+      background: var(--cream);
+      border: 1px solid hsla(30, 12.5%, 18.8%, 0.08);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px hsla(30, 12.5%, 18.8%, 0.03);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .analytics-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px hsla(30, 12.5%, 18.8%, 0.08);
+    }
+    .analytics-card-header {
+      padding: 0.6rem 0.9rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      background: var(--linen);
+      color: var(--walnut);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .analytics-card-header.after {
+      background: var(--espresso);
+      color: var(--cream);
+    }
+    .analytics-img-wrap {
+      width: 100%;
+      height: 220px;
+      background: #fdfdfd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .analytics-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: top center;
+      transition: transform 0.3s ease;
+    }
+    .analytics-card:hover .analytics-img-wrap img {
+      transform: scale(1.02);
     }
 
     /* ---- CERTIFICATE ---- */
@@ -441,18 +520,21 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease;
+      padding: 2rem;
     }
     .lightbox.active {
       opacity: 1;
       pointer-events: auto;
     }
     .lightbox img {
-      max-width: 90vw;
-      max-height: 90vh;
+      /* Заставляем картинку растягиваться под размер экрана */
+      width: min(90vw, 550px);
+      height: 85vh;
       object-fit: contain;
-      border-radius: 6px;
-      transform: scale(0.92);
+      border-radius: 12px;
+      transform: scale(0.95);
       transition: transform 0.3s ease;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     }
     .lightbox.active img {
       transform: scale(1);
@@ -590,6 +672,7 @@
       .cta-section { flex-direction: column; align-items: center; }
       .btn { width: 100%; max-width: 320px; justify-content: center; }
       .tab-btn { width: 100%; text-align: center; }
+      .analytics-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -651,99 +734,241 @@
 
   <!-- Tab 1: Experience -->
   <div class="tab-pane active" id="tab-experience">
-    <div class="section-header" style="margin-bottom: 2rem;">
-      <span class="section-number" style="font-size: 3rem;">01</span>
-      <div class="section-header-text">
-        <p class="section-label">Certification &amp; Marketing Simulation Experience</p>
-        <h2>Social Media Simternship® – Stukent</h2>
-      </div>
-    </div>
-    <div class="project-content">
-      <div class="project-details">
-        <div class="detail-item">
-          <div class="detail-bullet"></div>
-          <p>Completed a hands-on digital marketing simulation focused on social media strategy and campaign execution</p>
-        </div>
-        <div class="detail-item">
-          <div class="detail-bullet"></div>
-          <p>Managed and tested social media campaigns using both organic and paid strategies</p>
-        </div>
-        <div class="detail-item">
-          <div class="detail-bullet"></div>
-          <p>Analysed key performance metrics (KPIs) to improve engagement and conversions</p>
-        </div>
-        <div class="detail-item">
-          <div class="detail-bullet"></div>
-          <p>Applied audience targeting and demographic analysis to optimise campaign performance</p>
-        </div>
-        <div class="detail-item">
-          <div class="detail-bullet"></div>
-          <p>Developed campaign strategies, content variations and A/B testing approaches</p>
-        </div>
-        <div class="detail-item">
-          <div class="detail-bullet"></div>
-          <p>Gained practical experience in performance marketing, content optimisation and digital advertising</p>
+    <!-- ATHLONE SWEETS -->
+    <div class="experience-block">
+      <div class="section-header" style="margin-bottom: 2rem;">
+        <span class="section-number" style="font-size: 3rem;">01</span>
+        <div class="section-header-text">
+          <p class="section-label">Digital Marketing Intern | May 2026 – August 2026</p>
+          <h2>Athlone Sweets</h2>
         </div>
       </div>
+      <div class="project-content">
+        <div class="project-details">
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Managed social media content and community engagement across Instagram, TikTok and Facebook</p>
+          </div>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Planned content calendars and created platform-specific content aligned with brand identity and marketing objectives</p>
+          </div>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Managed full end-to-end content production: research, filming, editing with CapCut & Premiere Pro, copy writing and publishing</p>
+          </div>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Developed and executed a local creative campaign ("Hidden Sweets") combining offline activation with social media content</p>
+          </div>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Designed branded graphics and promotional visual assets using Canva and Adobe Photoshop</p>
+          </div>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Monitored social media trends and competitor activity to generate actionable content ideas and support community management</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ANALYTICS SHOWCASE -->
+      <div class="analytics-section">
+        <!-- INSTAGRAM GROUP -->
+        <div class="analytics-group">
+          <div class="analytics-group-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Instagram Growth &amp; Engagement
+          </div>
+          <div class="analytics-grid">
+            <div class="analytics-card">
+              <div class="analytics-card-header">Before • Interactions</div>
+              <div class="analytics-img-wrap">
+                <img src="images/athloneSweets/INSTAGRAM%20interactions%20before.jpg" alt="Instagram Interactions Before" loading="lazy">
+              </div>
+            </div>
+            <div class="analytics-card">
+              <div class="analytics-card-header">Before • Followers</div>
+              <div class="analytics-img-wrap">
+                <img src="images/athloneSweets/INSTAGRAM%20follows%20before.jpg" alt="Instagram Followers Before" loading="lazy">
+              </div>
+            </div>
+            <div class="analytics-card">
+              <div class="analytics-card-header after">After • Followers Growth</div>
+              <div class="analytics-img-wrap">
+                <img src="images/athloneSweets/INSTAGRAM%20follows%20after.jpg" alt="Instagram Followers After" loading="lazy">
+              </div>
+            </div>
+            <div class="analytics-card">
+              <div class="analytics-card-header after">After • Views Overview</div>
+              <div class="analytics-img-wrap">
+                <img src="images/athloneSweets/INSTAGRAM%20overview%20after.jpg" alt="Instagram Views Overview After" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIKTOK GROUP -->
+        <div class="analytics-group">
+          <div class="analytics-group-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+            TikTok Performance &amp; Reach
+          </div>
+          <div class="analytics-grid">
+            <div class="analytics-card">
+              <div class="analytics-card-header">Before • Key Metrics</div>
+              <div class="analytics-img-wrap">
+                <img src="images/athloneSweets/TIKTOK%20Overview%20before.jpg" alt="TikTok Overview Before" loading="lazy">
+              </div>
+            </div>
+            <div class="analytics-card">
+              <div class="analytics-card-header after">After • Key Metrics (+2000%)</div>
+              <div class="analytics-img-wrap">
+                <img src="images/athloneSweets/TIKTOK%20Overview%20after.jpg" alt="TikTok Overview After" loading="lazy">
+              </div>
+            </div>
+            <div class="analytics-card">
+              <div class="analytics-card-header after">After • Follower Growth</div>
+              <div class="analytics-img-wrap">
+                <img src="images/athloneSweets/TIKTOK%20follows%20after.jpg" alt="TikTok Followers After" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <a class="certificate-wrap" href="pdf/STUKENT%20Certificate%20of%20Completion.pdf" target="_blank" rel="noopener">
-      <img src="images/stukent-certificate.png" alt="Stukent Certificate of Completion">
-    </a>
+
+    <!-- STUKENT SIMTERNSHIP -->
+    <div class="experience-block">
+      <div class="section-header" style="margin-bottom: 2rem;">
+        <span class="section-number" style="font-size: 3rem;">02</span>
+        <div class="section-header-text">
+          <p class="section-label">Certification &amp; Marketing Simulation Experience</p>
+          <h2>Social Media Simternship® – Stukent</h2>
+        </div>
+      </div>
+      <div class="project-content">
+        <div class="project-details">
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Completed a hands-on digital marketing simulation focused on social media strategy and campaign execution</p>
+          </div>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Managed and tested social media campaigns using both organic and paid strategies</p>
+          </div>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Analysed key performance metrics (KPIs) to improve engagement and conversions</p>
+          </div>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Applied audience targeting and demographic analysis to optimise campaign performance</p>
+          </div>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Developed campaign strategies, content variations and A/B testing approaches</p>
+          </div>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Gained practical experience in performance marketing, content optimisation and digital advertising</p>
+          </div>
+        </div>
+      </div>
+      <a class="certificate-wrap" href="pdf/STUKENT%20Certificate%20of%20Completion.pdf" target="_blank" rel="noopener">
+        <img src="images/stukent-certificate.png" alt="Stukent Certificate of Completion">
+      </a>
+    </div>
   </div>
 
   <!-- Tab 2: Projects -->
   <div class="tab-pane" id="tab-projects">
-    <div class="section-header" style="margin-bottom: 2rem;">
-      <span class="section-number" style="font-size: 3rem;">01</span>
-      <div class="section-header-text">
-        <p class="section-label">Featured Project</p>
-        <h2>Academic Marketing Project</h2>
+    <!-- PROJECT 1: HIDDEN SWEETS CAMPAIGN -->
+    <div class="experience-block">
+      <div class="section-header" style="margin-bottom: 2rem;">
+        <span class="section-number" style="font-size: 3rem;">01</span>
+        <div class="section-header-text">
+          <p class="section-label">Integrated Campaign &amp; Activation</p>
+          <h2>Athlone Sweets – Hidden Sweets Campaign</h2>
+        </div>
       </div>
-    </div>
-    <div class="project-content">
-      <div class="project-details">
-        <h3>Brand Creation &amp; Digital Campaign</h3>
-        <div class="detail-item">
-          <div class="detail-bullet"></div>
-          <p>Developed a full brand concept, including mission, vision, target audience and competitor analysis</p>
-        </div>
-        <div class="detail-item">
-          <div class="detail-bullet"></div>
-          <p>Designed a structured digital marketing campaign and content strategy</p>
-        </div>
-        <div class="detail-item">
-          <div class="detail-bullet"></div>
-          <p>Created visual marketing materials aligned with brand guidelines</p>
-        </div>
-        <div class="detail-item">
-          <div class="detail-bullet"></div>
-          <p>Applied marketing mix principles (Product, Price, Place, Promotion)</p>
-        </div>
-        <div class="detail-item">
-          <div class="detail-bullet"></div>
-          <p>Explored marketing performance metrics and campaign evaluation approaches</p>
+      <div class="project-content">
+        <div class="project-details">
+          <h3>Integrated Local Campaign &amp; Audience Engagement</h3>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Developed and executed a local integrated campaign combining physical offline activations with interactive social media content</p>
+          </div>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Planned the overarching campaign strategy, target audience interaction, and supporting digital promo assets</p>
+          </div>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Created teaser and location-based video content connected to physical spots around Athlone to drive local participation</p>
+          </div>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Oversee end-to-end campaign workflow including creative brainstorming, filming, publishing, and real-time follower communication</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Gallery inside Projects tab -->
-    <div class="gallery">
-      <p class="gallery-label">Project Gallery</p>
-      <div class="gallery-scroll">
-        <div class="g-item">
-          <img src="images/photo_2025-05-05_20-09-07_-_Copy.webp" alt="Marketing project visual 1" loading="lazy">
+    <!-- PROJECT 2: ACADEMIC MARKETING PROJECT -->
+    <div class="experience-block">
+      <div class="section-header" style="margin-bottom: 2rem;">
+        <span class="section-number" style="font-size: 3rem;">02</span>
+        <div class="section-header-text">
+          <p class="section-label">Featured Project</p>
+          <h2>Academic Marketing Project</h2>
         </div>
-        <div class="g-item">
-          <img src="images/photo_2025-05-05_20-09-08.webp" alt="Marketing project visual 2" loading="lazy">
+      </div>
+      <div class="project-content">
+        <div class="project-details">
+          <h3>Brand Creation &amp; Digital Campaign</h3>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Developed a full brand concept, including mission, vision, target audience and competitor analysis</p>
+          </div>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Designed a structured digital marketing campaign and content strategy</p>
+          </div>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Created visual marketing materials aligned with brand guidelines</p>
+          </div>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Applied marketing mix principles (Product, Price, Place, Promotion)</p>
+          </div>
+          <div class="detail-item">
+            <div class="detail-bullet"></div>
+            <p>Explored marketing performance metrics and campaign evaluation approaches</p>
+          </div>
         </div>
-        <div class="g-item">
-          <img src="images/photo_2025-05-05_20-09-10__283_29.webp" alt="Marketing project visual 3" loading="lazy">
-        </div>
-        <div class="g-item">
-          <img src="images/photo_2025-05-05_20-09-11.webp" alt="Marketing project visual 4" loading="lazy">
-        </div>
-        <div class="g-item">
-          <img src="images/photo_2025-05-05_20-09-09__282_29.webp" alt="Marketing project visual 5" loading="lazy">
+      </div>
+
+      <!-- Gallery inside Projects tab -->
+      <div class="gallery">
+        <p class="gallery-label">Project Gallery</p>
+        <div class="gallery-scroll">
+          <div class="g-item">
+            <img src="images/photo_2025-05-05_20-09-07_-_Copy.webp" alt="Marketing project visual 1" loading="lazy">
+          </div>
+          <div class="g-item">
+            <img src="images/photo_2025-05-05_20-09-08.webp" alt="Marketing project visual 2" loading="lazy">
+          </div>
+          <div class="g-item">
+            <img src="images/photo_2025-05-05_20-09-10__283_29.webp" alt="Marketing project visual 3" loading="lazy">
+          </div>
+          <div class="g-item">
+            <img src="images/photo_2025-05-05_20-09-11.webp" alt="Marketing project visual 4" loading="lazy">
+          </div>
+          <div class="g-item">
+            <img src="images/photo_2025-05-05_20-09-09__282_29.webp" alt="Marketing project visual 5" loading="lazy">
+          </div>
         </div>
       </div>
     </div>
@@ -811,13 +1036,29 @@
   // Lightbox
   const lightbox = document.getElementById('lightbox');
   const lbImg = lightbox.querySelector('img');
-  document.querySelectorAll('.gallery-scroll .g-item img').forEach(img => {
+
+  document.querySelectorAll('.gallery-scroll .g-item img, .analytics-img-wrap img').forEach(img => {
     img.addEventListener('click', () => {
       lbImg.src = img.src;
       lbImg.alt = img.alt;
+
+      // Динамический размер в зависимости от пропорций картинки
+      if (img.naturalHeight > img.naturalWidth) {
+        // Вертикальные скриншоты (Instagram / TikTok)
+        lbImg.style.width = 'auto';
+        lbImg.style.height = '88vh';
+        lbImg.style.maxWidth = '90vw';
+      } else {
+        // Горизонтальные изображения
+        lbImg.style.width = '88vw';
+        lbImg.style.height = 'auto';
+        lbImg.style.maxHeight = '88vh';
+      }
+
       lightbox.classList.add('active');
     });
   });
+
   lightbox.addEventListener('click', (e) => {
     if (e.target !== lbImg) lightbox.classList.remove('active');
   });
