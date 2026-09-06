@@ -55,7 +55,7 @@
       color: var(--espresso);
       text-decoration: none;
     }
-        nav .nav-right {
+    nav .nav-right {
       display: flex;
       gap: 1.8rem;
     }
@@ -244,7 +244,7 @@
       margin-top: 1.5rem;
     }
 
-    /* ---- PROJECT ---- */
+    /* ---- SECTIONS & TABS ---- */
     .project {
       padding: 5rem 3rem 3rem;
       max-width: 1200px;
@@ -254,7 +254,7 @@
       display: flex;
       align-items: center;
       gap: 1.5rem;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
     .section-number {
       font-family: 'Young Serif', serif;
@@ -275,11 +275,56 @@
       color: var(--espresso);
       letter-spacing: -0.01em;
     }
+
+    /* ---- КРУПНЫЕ И ЦЕНТРИРОВАННЫЕ ТАБЫ ---- */
+    .project-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: var(--linen);
+      border: 2px solid hsla(30, 12.5%, 18.8%, 0.15);
+      padding: 0.9rem 2.4rem;
+      border-radius: 100px;
+      font-family: 'Young Serif', serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      color: var(--walnut);
+      cursor: pointer;
+      box-shadow: 0 4px 16px hsla(30, 12.5%, 18.8%, 0.04);
+      transition: all 0.3s ease;
+    }
+    .tab-btn:hover {
+      border-color: var(--espresso);
+      color: var(--espresso);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px hsla(30, 12.5%, 18.8%, 0.08);
+    }
+    .tab-btn.active {
+      background: var(--espresso);
+      color: var(--cream);
+      border-color: var(--espresso);
+      box-shadow: 0 8px 24px hsla(30, 12.5%, 18.8%, 0.15);
+    }
+
+    /* Tab content panes */
+    .tab-pane {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+    .tab-pane.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .project-content {
       max-width: 680px;
-    }
-    .project-details {
-      padding-top: 0.5rem;
     }
     .project-details h3 {
       font-family: 'Young Serif', serif;
@@ -308,7 +353,6 @@
       line-height: 1.65;
     }
 
-
     /* ---- CERTIFICATE ---- */
     .certificate-wrap {
       display: inline-block;
@@ -330,9 +374,9 @@
       height: auto;
     }
 
-    /* ---- GALLERY ---- */
+    /* ---- GALLERY (Inside Projects Tab) ---- */
     .gallery {
-      padding: 3rem 0 5rem;
+      padding: 3rem 0 1rem;
     }
     .gallery-label {
       font-size: 0.68rem;
@@ -340,7 +384,7 @@
       letter-spacing: 0.2em;
       color: var(--sand);
       margin-bottom: 1.5rem;
-      text-align: center;
+      text-align: left;
     }
     .gallery-scroll {
       display: flex;
@@ -348,8 +392,8 @@
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
-      padding: 0 3rem 1.5rem;
-      justify-content: center;
+      padding: 0 0 1.5rem;
+      justify-content: flex-start;
       scrollbar-width: thin;
       scrollbar-color: var(--sand) transparent;
     }
@@ -369,17 +413,15 @@
       border-radius: 8px;
       overflow: hidden;
       background: var(--linen);
+      cursor: pointer;
     }
     .gallery-scroll .g-item img {
-      height: 380px;
+      height: 320px;
       width: auto;
       display: block;
       object-fit: contain;
       filter: saturate(0.92);
       transition: filter 0.4s ease;
-    }
-    .gallery-scroll .g-item {
-      cursor: pointer;
     }
     .gallery-scroll .g-item:hover img {
       filter: saturate(1);
@@ -533,83 +575,91 @@
       .hero-image { width: 260px; }
       nav { padding: 1rem 1.5rem; }
       nav.scrolled { padding: 0.6rem 1.5rem; }
-      .gallery-scroll .g-item img { height: 300px; }
+      .gallery-scroll .g-item img { height: 260px; }
       .skills-strip { padding: 2rem 1.5rem; gap: 1.5rem; }
-      .project, .gallery { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .project, .cta-section { padding-left: 1.5rem; padding-right: 1.5rem; }
       .cta-section { padding: 3rem 1.5rem 4rem; }
       .statement { padding: 4rem 1.5rem; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
     @media (max-width: 540px) {
       .hero-image { width: 220px; }
-      .gallery-scroll .g-item img { height: 250px; }
-      .gallery-scroll { padding: 0 1.2rem 1.5rem; }
+      .gallery-scroll .g-item img { height: 220px; }
       .skills-list { flex-wrap: wrap; }
       .section-number { font-size: 2.8rem; }
       .cta-section { flex-direction: column; align-items: center; }
       .btn { width: 100%; max-width: 320px; justify-content: center; }
+      .tab-btn { width: 100%; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <nav id="nav">
-    <div class="nav-left">
-      <a href="#" class="logo">Yuliia Litvinova</a>
-    </div>
-    <div class="nav-right">
-      <a href="pdf/CV%20Yuliia%20Litvinova.pdf" target="_blank">CV</a>
-      <a href="https://www.linkedin.com/in/yuliialitvinovaa/" target="_blank">LinkedIn</a>
-    </div>
-  </nav>
+<nav id="nav">
+  <div class="nav-left">
+    <a href="#" class="logo">Yuliia Litvinova</a>
+  </div>
+  <div class="nav-right">
+    <a href="pdf/CV%20Yuliia%20Litvinova.pdf" target="_blank">CV</a>
+    <a href="https://www.linkedin.com/in/yuliialitvinovaa/" target="_blank">LinkedIn</a>
+  </div>
+</nav>
 
-  <!-- SKILLS -->
-  <div class="skills-strip">
-    <span class="label">Expertise</span>
-    <div class="divider"></div>
-    <ul class="skills-list">
-      <li>Digital marketing strategy</li>
-      <li>Brand development</li>
-      <li>Social media planning</li>
-      <li>Marketing analytics</li>
-      <li>Visual content creation</li>
-    </ul>
+<!-- SKILLS -->
+<div class="skills-strip">
+  <span class="label">Expertise</span>
+  <div class="divider"></div>
+  <ul class="skills-list">
+    <li>Integrated Marketing</li>
+    <li>Content</li>
+    <li>Social Media</li>
+    <li>Email</li>
+    <li>B2B</li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-image">
+    <img src="images/photo_2025-05-05_22-09-18.webp" alt="Yuliia Litvinova" loading="eager">
+  </div>
+  <div class="hero-text">
+    <span class="hero-label">Quick Bio</span>
+    <h1 class="hero-greeting">Hi, I'm Yuliia <span class="wave">👋</span></h1>
+    <div class="hero-bio">
+      <p>Digital Marketing student based in Ireland, focused on strategy, content and brand communication.</p>
+      <p>I build structured marketing campaigns, create visual content and explore how data can support creative decisions. I'm especially interested in roles where organisation meets creativity — from campaign planning to event support and digital content coordination.</p>
+      <p>Currently studying at Technological University of the Shannon, I'm developing practical experience in marketing strategy, brand development and content creation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="statement reveal">
+  <p>I value clarity, consistency and thoughtful execution. I'm building my experience step by step — and this portfolio reflects that journey.</p>
+  <span class="sign-off">Let's create something meaningful!</span>
+</section>
+
+<!-- MAIN SECTION WITH EXPERIENCE & PROJECTS TABS -->
+<section class="project">
+
+  <!-- Крупные и центрированные кнопки табов -->
+  <div class="project-tabs reveal">
+    <button class="tab-btn active" data-tab="tab-experience">Experience</button>
+    <button class="tab-btn" data-tab="tab-projects">Projects</button>
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-image">
-      <img src="images/photo_2025-05-05_22-09-18.webp" alt="Yuliia Litvinova" loading="eager">
-    </div>
-    <div class="hero-text">
-      <span class="hero-label">Quick Bio</span>
-      <h1 class="hero-greeting">Hi, I'm Yuliia <span class="wave">👋</span></h1>
-      <div class="hero-bio">
-        <p>Digital Marketing student based in Ireland, focused on strategy, content and brand communication.</p>
-        <p>I build structured marketing campaigns, create visual content and explore how data can support creative decisions. I'm especially interested in roles where organisation meets creativity — from campaign planning to event support and digital content coordination.</p>
-        <p>Currently studying at Technological University of the Shannon, I'm developing practical experience in marketing strategy, brand development and content creation.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- STATEMENT -->
-  <section class="statement reveal">
-    <p>I value clarity, consistency and thoughtful execution. I'm building my experience step by step — and this portfolio reflects that journey.</p>
-    <span class="sign-off">Let's create something meaningful!</span>
-  </section>
-
-  <!-- PROJECT 01 -->
-  <section class="project">
-    <div class="section-header reveal">
-      <span class="section-number">01</span>
+  <!-- Tab 1: Experience -->
+  <div class="tab-pane active" id="tab-experience">
+    <div class="section-header" style="margin-bottom: 2rem;">
+      <span class="section-number" style="font-size: 3rem;">01</span>
       <div class="section-header-text">
         <p class="section-label">Certification &amp; Marketing Simulation Experience</p>
         <h2>Social Media Simternship® – Stukent</h2>
       </div>
     </div>
     <div class="project-content">
-      <div class="project-details reveal">
-        <h3>Certification &amp; Marketing Simulation Experience</h3>
+      <div class="project-details">
         <div class="detail-item">
           <div class="detail-bullet"></div>
           <p>Completed a hands-on digital marketing simulation focused on social media strategy and campaign execution</p>
@@ -636,22 +686,22 @@
         </div>
       </div>
     </div>
-    <a class="certificate-wrap reveal" href="pdf/STUKENT%20Certificate%20of%20Completion.pdf" target="_blank" rel="noopener">
+    <a class="certificate-wrap" href="pdf/STUKENT%20Certificate%20of%20Completion.pdf" target="_blank" rel="noopener">
       <img src="images/stukent-certificate.png" alt="Stukent Certificate of Completion">
     </a>
-  </section>
+  </div>
 
-  <!-- PROJECT 02 -->
-  <section class="project">
-    <div class="section-header reveal">
-      <span class="section-number">02</span>
+  <!-- Tab 2: Projects -->
+  <div class="tab-pane" id="tab-projects">
+    <div class="section-header" style="margin-bottom: 2rem;">
+      <span class="section-number" style="font-size: 3rem;">01</span>
       <div class="section-header-text">
         <p class="section-label">Featured Project</p>
         <h2>Academic Marketing Project</h2>
       </div>
     </div>
     <div class="project-content">
-      <div class="project-details reveal">
+      <div class="project-details">
         <h3>Brand Creation &amp; Digital Campaign</h3>
         <div class="detail-item">
           <div class="detail-bullet"></div>
@@ -675,90 +725,106 @@
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- GALLERY -->
-  <section class="gallery">
-    <p class="gallery-label reveal">Project Gallery</p>
-    <div class="gallery-scroll">
-      <div class="g-item">
-        <img src="images/photo_2025-05-05_20-09-07_-_Copy.webp" alt="Marketing project visual 1" loading="lazy">
-      </div>
-      <div class="g-item">
-        <img src="images/photo_2025-05-05_20-09-08.webp" alt="Marketing project visual 2" loading="lazy">
-      </div>
-      <div class="g-item">
-        <img src="images/photo_2025-05-05_20-09-10__283_29.webp" alt="Marketing project visual 3" loading="lazy">
-      </div>
-      <div class="g-item">
-        <img src="images/photo_2025-05-05_20-09-11.webp" alt="Marketing project visual 4" loading="lazy">
-      </div>
-      <div class="g-item">
-        <img src="images/photo_2025-05-05_20-09-09__282_29.webp" alt="Marketing project visual 5" loading="lazy">
+    <!-- Gallery inside Projects tab -->
+    <div class="gallery">
+      <p class="gallery-label">Project Gallery</p>
+      <div class="gallery-scroll">
+        <div class="g-item">
+          <img src="images/photo_2025-05-05_20-09-07_-_Copy.webp" alt="Marketing project visual 1" loading="lazy">
+        </div>
+        <div class="g-item">
+          <img src="images/photo_2025-05-05_20-09-08.webp" alt="Marketing project visual 2" loading="lazy">
+        </div>
+        <div class="g-item">
+          <img src="images/photo_2025-05-05_20-09-10__283_29.webp" alt="Marketing project visual 3" loading="lazy">
+        </div>
+        <div class="g-item">
+          <img src="images/photo_2025-05-05_20-09-11.webp" alt="Marketing project visual 4" loading="lazy">
+        </div>
+        <div class="g-item">
+          <img src="images/photo_2025-05-05_20-09-09__282_29.webp" alt="Marketing project visual 5" loading="lazy">
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- CTA -->
-  <div class="cta-section reveal">
-    <a href="pdf/BRAND%20CREATION%20&%20MARKETING%20ChocBerry..pdf" class="btn btn-primary" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-      Project PDF
-    </a>
-    <a href="https://www.instagram.com/chocberry.ie/" class="btn btn-secondary" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-      Instagram Page
-    </a>
   </div>
+</section>
 
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" aria-label="Close">
-      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <img src="" alt="">
-  </div>
+<!-- CTA -->
+<div class="cta-section reveal">
+  <a href="pdf/BRAND%20CREATION%20&%20MARKETING%20ChocBerry..pdf" class="btn btn-primary" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+    Project PDF
+  </a>
+  <a href="https://www.instagram.com/chocberry.ie/" class="btn btn-secondary" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    Instagram Page
+  </a>
+</div>
 
-  <!-- FOOTER -->
-  <footer>
-    <span class="footer-name">Yuliia Litvinova</span>
-    <span class="footer-right">Digital Marketing Portfolio · 2025</span>
-  </footer>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="Close">
+    <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <img src="" alt="">
+</div>
 
-  <script>
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Yuliia Litvinova</span>
+  <span class="footer-right">Digital Marketing Portfolio · 2025</span>
+</footer>
 
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(el => observer.observe(el));
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
 
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lbImg = lightbox.querySelector('img');
-    document.querySelectorAll('.gallery-scroll .g-item img').forEach(img => {
-      img.addEventListener('click', () => {
-        lbImg.src = img.src;
-        lbImg.alt = img.alt;
-        lightbox.classList.add('active');
-      });
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
     });
-    lightbox.addEventListener('click', (e) => {
-      if (e.target !== lbImg) lightbox.classList.remove('active');
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Tabs functionality
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanes = document.querySelectorAll('.tab-pane');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabPanes.forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      const targetId = btn.getAttribute('data-tab');
+      document.getElementById(targetId).classList.add('active');
     });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') lightbox.classList.remove('active');
+  });
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = lightbox.querySelector('img');
+  document.querySelectorAll('.gallery-scroll .g-item img').forEach(img => {
+    img.addEventListener('click', () => {
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lightbox.classList.add('active');
     });
-  </script>
+  });
+  lightbox.addEventListener('click', (e) => {
+    if (e.target !== lbImg) lightbox.classList.remove('active');
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') lightbox.classList.remove('active');
+  });
+</script>
 
 </body>
 </html>
