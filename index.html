@@ -210,6 +210,182 @@
       color: var(--accent-soft);
     }
 
+    /* ---- INSTAGRAM REELS GRID (5 CARDS IN 1 ROW) ---- */
+    .reels-grid {
+      display: grid;
+      /* Принудительно 5 равных колонок */
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem; /* Немного уменьшили отступ, чтобы всё красиво влезло */
+      margin-top: 2rem;
+    }
+
+    .reels-card {
+      position: relative;
+      display: block;
+      aspect-ratio: 9 / 16; /* Пропорция Reels / Shorts */
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+      background-color: #1a1a1a; /* Темный фон на время загрузки обложки */
+    }
+
+    .reels-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+    }
+
+    .reels-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .reels-card:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Оверлей с темным градиентом внизу для читаемости текста */
+    .reels-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 0.2) 0%,
+              rgba(0, 0, 0, 0) 40%,
+              rgba(0, 0, 0, 0.75) 100%
+      );
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+      color: #ffffff;
+      z-index: 2;
+    }
+
+    /* Бейджик Instagram вверху карточки */
+    .reels-badge {
+      align-self: flex-start;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 0.35rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* Кнопка Play по центру */
+    .reels-play-btn {
+      align-self: center;
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .reels-card:hover .reels-play-btn {
+      transform: scale(1.15);
+      background: rgba(255, 255, 255, 0.9);
+      color: #000000;
+      border-color: #ffffff;
+    }
+
+    .reels-card:hover .reels-play-btn svg {
+      fill: #000000;
+    }
+
+    /* Заголовок/описание ролика внизу */
+    .reels-title {
+      font-size: 0.8rem;
+      line-height: 1.35;
+      font-weight: 500;
+      color: #ffffff;
+      margin: 0;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Адаптивы для планшетов и мобильных устройств */
+    @media (max-width: 768px) {
+      .reels-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.85rem;
+      }
+
+      .reels-play-btn {
+        width: 40px;
+        height: 40px;
+      }
+
+      .reels-title {
+        font-size: 0.75rem;
+      }
+    }
+
+    /* ---- FIX CONTRAST FOR MORE CARD ---- */
+    .reels-card--more {
+      background: #18181b !important; /* Темный фоновый цвет */
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .reels-card--more:hover {
+      background: #27272a !important;
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Белый контрастный текст */
+    .reels-more-text strong {
+      display: block;
+      font-size: 0.95rem;
+      color: #ffffff !important;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .reels-more-text span {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    /* Цвет стрелки */
+    .reels-more-arrow {
+      color: #ffffff !important;
+    }
+
+    /* Контейнер логотипа на темном фоне */
+    .reels-more-logo {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: #ffffff;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .reels-more-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
     /* ---- STATEMENT ---- */
     .statement {
       padding: 6rem 3rem;
@@ -710,16 +886,16 @@
     <span class="hero-label">Quick Bio</span>
     <h1 class="hero-greeting">Hi, I'm Yuliia <span class="wave">👋</span></h1>
     <div class="hero-bio">
-      <p>Digital Marketing student based in Ireland, focused on strategy, content and brand communication.</p>
-      <p>I build structured marketing campaigns, create visual content and explore how data can support creative decisions. I'm especially interested in roles where organisation meets creativity — from campaign planning to event support and digital content coordination.</p>
-      <p>Currently studying at Technological University of the Shannon, I'm developing practical experience in marketing strategy, brand development and content creation.</p>
+      <p>Digital Marketing student based in Ireland, with hands-on experience across social media, content creation, email marketing, B2B outreach and e-commerce.</p>
+      <p>I enjoy combining creative ideas with practical marketing — from researching audiences and developing campaign concepts to creating content and supporting campaign execution.</p>
+      <p>Currently studying Digital Marketing at the Technological University of the Shannon, while gaining practical experience across different areas of marketing and continuing to develop my skills.</p>
     </div>
   </div>
 </section>
 
 <!-- STATEMENT -->
 <section class="statement reveal">
-  <p>I value clarity, consistency and thoughtful execution. I'm building my experience step by step — and this portfolio reflects that journey.</p>
+  <p>I’m building my experience through real-world projects, creative ideas and hands-on marketing work — and this portfolio reflects that journey.</p>
   <span class="sign-off">Let's create something meaningful!</span>
 </section>
 
@@ -911,6 +1087,86 @@
             <div class="detail-bullet"></div>
             <p>Oversee end-to-end campaign workflow including creative brainstorming, filming, publishing, and real-time follower communication</p>
           </div>
+        </div>
+        <div class="reels-grid">
+
+          <a href="https://www.instagram.com/reel/Da-NSzAoBKM/" target="_blank" rel="noopener noreferrer" class="reels-card">
+            <img src="images/athloneSweets/reel-3.jpeg" alt="Hidden Sweets Reel 3" loading="lazy">
+            <div class="reels-overlay">
+              <div class="reels-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                Watch on Instagram
+              </div>
+              <div class="reels-play-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 2px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+              <p class="reels-title">Hidden Sweets • Reel 3</p>
+            </div>
+          </a>
+
+          <a href="https://www.instagram.com/reel/DaIInRJIFWA/" target="_blank" rel="noopener noreferrer" class="reels-card">
+            <img src="images/athloneSweets/reel-1.jpeg" alt="Hidden Sweets Reel 1" loading="lazy">
+            <div class="reels-overlay">
+              <div class="reels-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                Watch on Instagram
+              </div>
+              <div class="reels-play-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 2px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+              <p class="reels-title">Hidden Sweets • Reel 1</p>
+            </div>
+          </a>
+
+          <a href="https://www.instagram.com/reel/DasLeNhApxh/" target="_blank" rel="noopener noreferrer" class="reels-card">
+            <img src="images/athloneSweets/reel-2.jpeg" alt="Hidden Sweets Reel 2" loading="lazy">
+            <div class="reels-overlay">
+              <div class="reels-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                Watch on Instagram
+              </div>
+              <div class="reels-play-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 2px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+              <p class="reels-title">Hidden Sweets • Reel 2</p>
+            </div>
+          </a>
+
+          <a href="https://www.instagram.com/reel/DbQglEmAL-X/" target="_blank" rel="noopener noreferrer" class="reels-card">
+            <img src="images/athloneSweets/reel-4.jpeg" alt="Hidden Sweets Reel 4" loading="lazy">
+            <div class="reels-overlay">
+              <div class="reels-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                Watch on Instagram
+              </div>
+              <div class="reels-play-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 2px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+              <p class="reels-title">Hidden Sweets • Reel 4</p>
+            </div>
+          </a>
+
+          <!-- 5th Card: View More -->
+          <a href="https://www.instagram.com/athlonesweets/" target="_blank" rel="noopener noreferrer" class="reels-card reels-card--more">
+            <div class="reels-overlay reels-overlay--more">
+              <!-- Логотип компании вместо абстрактной иконки -->
+              <div class="reels-more-logo">
+                <img src="images/athloneSweets/logo.PNG" alt="Athlone Sweets Logo">
+              </div>
+
+              <div class="reels-more-text">
+                <strong>More Reels</strong>
+                <span>View on Instagram</span>
+              </div>
+
+              <div class="reels-more-arrow">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
